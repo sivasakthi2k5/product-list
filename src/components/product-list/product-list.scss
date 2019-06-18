@@ -1,91 +1,98 @@
 @mixin breakpoint($class) {
-  @if $class == sm {
-    @media (max-width: 768px) { @content; }
-  }
-  @else if $class == lg {
-    @media (max-width: 1200px) { @content; }
-  }
-  @else {
-    @warn "Breakpoint mixin supports: sm, lg";
-  }
+	@if $class == sm {
+		@media (max-width: 768px) { @content; }
+	}
+
+	@else if $class == lg {
+		@media (max-width: 1200px) { @content; }
+	}
+
+	@else {
+		@warn "Breakpoint mixin supports: sm, lg";
+	}
 }
 
 .product-list {
-  &__product-image-container{
-    padding: 20px;
-    position: relative;
+	&__product-image-container {
+		padding: 20px;
+		position: relative;
 
-    @include breakpoint(sm) {
-      padding: 10px;
-    }
-  }
+		@include breakpoint(sm) {
+			padding: 10px;
+		}
+	}
 
-  &__product-image {
-    @include breakpoint(sm) {
-      width: 100%;
-    }
-  }
+	&__product-image {
+		@include breakpoint(sm) {
+			width: 100%;
+		}
+	}
 
-  &__product-name {
-    background: rgba(255, 255, 255, 0.5);
-    color: #000;
-    padding: 10px;
-    position: absolute;
-    top: 20px;
-    width: 95%;
+	&__product-name {
+		background: rgba(255, 255, 255, 0.5);
+		padding: 10px;
+		position: absolute;
+		top: 20px;
+		width: 95%;
 
-    @include breakpoint(sm) {
-      top: 0;
-    }
-  }
-  &__product-price {
-    background-color: #000;
-    bottom: 40px;
-    color: #FFF;
-    left: 40px;
-    padding: 5px;
-    position: absolute;
-  }
+		@include breakpoint(sm) {
+			top: 0;
+		}
+	}
+
+	&__product-name a {
+		color: #000;
+	}
+
+	&__product-price {
+		background-color: #000;
+		bottom: 40px;
+		color: #fff;
+		left: 40px;
+		padding: 5px;
+		position: absolute;
+	}
 }
+
 .product-carosuel {
-  background: rgba(0, 0, 0, 0.8);
-  bottom: 0;
-  height: 100%;
-  left: 0;
-  position: fixed;
-  right: 0;
-  top: 0;
-  width: 100%;
-  z-index: 2;
-  overflow: auto;
+	background: rgba(0, 0, 0, 0.8);
+	bottom: 0;
+	height: 100%;
+	left: 0;
+	position: fixed;
+	right: 0;
+	top: 0;
+	width: 100%;
+	z-index: 2;
+	overflow: auto;
 
-  .carousel .slide {
-    background: none;
-  }
+	.carousel .slide {
+		background: none;
+	}
 
-  .carousel .control-dots {
-    padding: 0
-  }
+	.carousel .control-dots {
+		padding: 0;
+	}
 
-  &__carosuel-block {
-    margin: 10% auto;
-    width: 500px;
+	&__carosuel-block {
+		margin: 10% auto;
+		width: 500px;
 
-    @include breakpoint(sm) {
-      margin: 30% auto;
-      width: 75%;
-    }
-  }
+		@include breakpoint(sm) {
+			margin: 30% auto;
+			width: 75%;
+		}
+	}
 
-  &__carosuel-close {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    z-index: 2;
-  }
+	&__carosuel-close {
+		position: absolute;
+		top: 15px;
+		right: 15px;
+		z-index: 2;
+	}
 
-  &__carosuel-close a {
-    color: #FFF;
-    font-size: 21px;
-  }
+	&__carosuel-close a {
+		color: #fff;
+		font-size: 21px;
+	}
 }

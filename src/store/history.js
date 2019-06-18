@@ -1,7 +1,7 @@
-import { hashHistory } from 'react-router'
+import { hashHistory } from "react-router";
 
 const getHistory = () => {
-  return hashHistory
-}
+  return hashHistory;
+};
 
-export default getHistory()
+export default getHistory();

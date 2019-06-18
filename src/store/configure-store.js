@@ -1,40 +1,40 @@
-import { createStore, applyMiddleware, compose } from 'redux'
-import thunk from 'redux-thunk'
-import { routerMiddleware } from 'react-router-redux'
-import createLogger from 'redux-logger'
-import Immutable from 'immutable'
+import { createStore, applyMiddleware, compose } from "redux";
+import thunk from "redux-thunk";
+import { routerMiddleware } from "react-router-redux";
+import createLogger from "redux-logger";
+import Immutable from "immutable";
 
-import history from './history'
-import initialState from './initial-state'
-import rootReducer from './root-reducer'
+import history from "./history";
+import initialState from "./initial-state";
+import rootReducer from "./root-reducer";
 
-const __DEVELOPMENT__ = process.env.NODE_ENV === 'development'
+const __DEVELOPMENT__ = process.env.NODE_ENV === "development";
 
-const middleware = [ thunk, routerMiddleware(history) ]
+const middleware = [ thunk, routerMiddleware(history) ];
 
-let enhancers
+let enhancers;
 
 if (__DEVELOPMENT__) {
   middleware.push(createLogger({
     collapsed: true,
     stateTransformer (state) {
       if (Immutable.Map.isMap(state) || Immutable.List.isList(state)) {
-        return state.toJS()
+        return state.toJS();
       }
-      return state
+      return state;
     }
-  }))
+  }));
 
   if (window.devToolsExtension) {
     enhancers = compose(
       applyMiddleware(...middleware),
       window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__() || window.devToolsExtension()
-    )
+    );
   } else {
-    enhancers = applyMiddleware(...middleware)
+    enhancers = applyMiddleware(...middleware);
   }
 } else {
-  enhancers = applyMiddleware(...middleware)
+  enhancers = applyMiddleware(...middleware);
 }
 
 /**
@@ -47,5 +47,5 @@ export default function () {
     rootReducer,
     initialState,
     enhancers
-  )
+  );
 }

@@ -1,5 +1,5 @@
-import _ from 'lodash'
+import _ from "lodash";
 
 export default () => {
-  return _.cloneDeep(window.productList)
-}
+  return _.cloneDeep(window.productList);
+};
